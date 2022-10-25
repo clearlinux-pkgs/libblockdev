@@ -4,7 +4,7 @@
 #
 Name     : libblockdev
 Version  : 2.28.1
-Release  : 59
+Release  : 60
 URL      : https://github.com/storaged-project/libblockdev/releases/download/2.28-1/libblockdev-2.28.tar.gz
 Source0  : https://github.com/storaged-project/libblockdev/releases/download/2.28-1/libblockdev-2.28.tar.gz
 Summary  : A library for low-level manipulation with block devices
@@ -120,7 +120,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663167609
+export SOURCE_DATE_EPOCH=1666736707
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -137,7 +137,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1663167609
+export SOURCE_DATE_EPOCH=1666736707
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libblockdev
 cp %{_builddir}/libblockdev-2.28/LICENSE %{buildroot}/usr/share/package-licenses/libblockdev/507ba5f4949dedff9e01b4d5b64b365fdc7d4d04 || :
