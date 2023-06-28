@@ -4,10 +4,14 @@ libbytesize.so.1
 libc.so.6
 libcryptsetup.so.12
 libdevmapper.so.1.02
+libe2p.so.2
+libext2fs.so.2
+libfdisk.so.1
 libgcc_s.so.1
 libgio-2.0.so.0
 libglib-2.0.so.0
 libgobject-2.0.so.0
+libkeyutils.so.1
 libkmod.so.2
 libm.so.6
 libmount.so.1
@@ -15,6 +19,7 @@ libndctl.so.6
 libnspr4.so
 libnss3.so
 libnssutil3.so
+libnvme.so.1
 libparted-fs-resize.so.0
 libparted.so.2
 libplc4.so
@@ -24,4 +29,3 @@ libssl3.so
 libudev.so.1
 libuuid.so.1
 libvolume_key.so.1
-libyaml-0.so.2
