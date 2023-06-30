@@ -1,0 +1,25 @@
+From a0f4b4659a7a39511fe03b36c3cd4a653f0cc7db Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Fri, 30 Jun 2023 13:07:32 -0700
+Subject: [PATCH] Update MAJOR_VER for v3 api
+
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 8a97345..614402e 100755
+--- a/configure
++++ b/configure
+@@ -17146,7 +17146,7 @@ fi
+ 
+ fi
+ 
+-MAJOR_VER=\"2\"
++MAJOR_VER=\"3\"
+ 
+ 
+ CFLAGS="$CFLAGS -std=gnu99"
+-- 
+2.41.0
+
