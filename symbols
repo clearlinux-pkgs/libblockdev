@@ -240,7 +240,6 @@ libbd_fs.so.3:bd_fs_xfs_set_label
 libbd_fs.so.3:bd_fs_xfs_set_uuid
 libbd_loop.so.3:bd_loop_close
 libbd_loop.so.3:bd_loop_error_quark
-libbd_loop.so.3:bd_loop_get_autoclear
 libbd_loop.so.3:bd_loop_get_loop_name
 libbd_loop.so.3:bd_loop_info
 libbd_loop.so.3:bd_loop_info_copy
@@ -251,7 +250,6 @@ libbd_loop.so.3:bd_loop_set_autoclear
 libbd_loop.so.3:bd_loop_setup
 libbd_loop.so.3:bd_loop_setup_from_fd
 libbd_loop.so.3:bd_loop_teardown
-libbd_lvm-dbus.so.3:_vglock_start_stop
 libbd_lvm-dbus.so.3:bd_lvm_add_lv_tags
 libbd_lvm-dbus.so.3:bd_lvm_add_pv_tags
 libbd_lvm-dbus.so.3:bd_lvm_add_vg_tags
@@ -352,7 +350,6 @@ libbd_lvm-dbus.so.3:bd_lvm_vgs
 libbd_lvm-dbus.so.3:bd_lvm_writecache_attach
 libbd_lvm-dbus.so.3:bd_lvm_writecache_create_cached_lv
 libbd_lvm-dbus.so.3:bd_lvm_writecache_detach
-libbd_lvm.so.3:_vglock_start_stop
 libbd_lvm.so.3:bd_lvm_add_lv_tags
 libbd_lvm.so.3:bd_lvm_add_pv_tags
 libbd_lvm.so.3:bd_lvm_add_vg_tags
@@ -508,9 +505,6 @@ libbd_nvdimm.so.3:bd_nvdimm_namespace_info
 libbd_nvdimm.so.3:bd_nvdimm_namespace_info_copy
 libbd_nvdimm.so.3:bd_nvdimm_namespace_info_free
 libbd_nvdimm.so.3:bd_nvdimm_namespace_reconfigure
-libbd_nvme.so.3:_nvme_fabrics_errno_to_gerror
-libbd_nvme.so.3:_nvme_status_to_error
-libbd_nvme.so.3:_open_dev
 libbd_nvme.so.3:bd_nvme_close
 libbd_nvme.so.3:bd_nvme_connect
 libbd_nvme.so.3:bd_nvme_controller_info_copy

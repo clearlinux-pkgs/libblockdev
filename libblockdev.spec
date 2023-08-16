@@ -4,10 +4,10 @@
 # Using build pattern: configure
 #
 Name     : libblockdev
-Version  : 3.0.1
-Release  : 64
-URL      : https://github.com/storaged-project/libblockdev/releases/download/3.0-1/libblockdev-3.0.tar.gz
-Source0  : https://github.com/storaged-project/libblockdev/releases/download/3.0-1/libblockdev-3.0.tar.gz
+Version  : 3.0.2.1
+Release  : 65
+URL      : https://github.com/storaged-project/libblockdev/releases/download/3.0.2-1/libblockdev-3.0.2.tar.gz
+Source0  : https://github.com/storaged-project/libblockdev/releases/download/3.0.2-1/libblockdev-3.0.2.tar.gz
 Summary  : A library for low-level manipulation with block devices
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-2.1+
@@ -20,7 +20,6 @@ Requires: libblockdev-python3 = %{version}-%{release}
 BuildRequires : buildreq-configure
 BuildRequires : glibc-bin
 BuildRequires : gobject-introspection-dev
-BuildRequires : keyutils-dev
 BuildRequires : nss-dev
 BuildRequires : pkgconfig(blkid)
 BuildRequires : pkgconfig(bytesize)
@@ -42,7 +41,6 @@ BuildRequires : volume_key-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
-Patch1: 0001-Update-MAJOR_VER-for-v3-api.patch
 
 %description
 The libblockdev is a C library with GObject introspection support that can be
@@ -121,11 +119,10 @@ python3 components for the libblockdev package.
 
 
 %prep
-%setup -q -n libblockdev-3.0
-cd %{_builddir}/libblockdev-3.0
-%patch -P 1 -p1
+%setup -q -n libblockdev-3.0.2
+cd %{_builddir}/libblockdev-3.0.2
 pushd ..
-cp -a libblockdev-3.0 buildavx2
+cp -a libblockdev-3.0.2 buildavx2
 popd
 
 %build
@@ -133,7 +130,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688155856
+export SOURCE_DATE_EPOCH=1692208394
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -162,10 +159,10 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1688155856
+export SOURCE_DATE_EPOCH=1692208394
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libblockdev
-cp %{_builddir}/libblockdev-3.0/LICENSE %{buildroot}/usr/share/package-licenses/libblockdev/507ba5f4949dedff9e01b4d5b64b365fdc7d4d04 || :
+cp %{_builddir}/libblockdev-3.0.2/LICENSE %{buildroot}/usr/share/package-licenses/libblockdev/507ba5f4949dedff9e01b4d5b64b365fdc7d4d04 || :
 pushd ../buildavx2/
 %make_install_v3
 popd
