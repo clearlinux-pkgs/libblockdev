@@ -5,7 +5,7 @@
 #
 Name     : libblockdev
 Version  : 3.0.2.1
-Release  : 65
+Release  : 66
 URL      : https://github.com/storaged-project/libblockdev/releases/download/3.0.2-1/libblockdev-3.0.2.tar.gz
 Source0  : https://github.com/storaged-project/libblockdev/releases/download/3.0.2-1/libblockdev-3.0.2.tar.gz
 Summary  : A library for low-level manipulation with block devices
@@ -113,6 +113,7 @@ python components for the libblockdev package.
 Summary: python3 components for the libblockdev package.
 Group: Default
 Requires: python3-core
+Requires: libbytesize
 
 %description python3
 python3 components for the libblockdev package.
@@ -130,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1692208394
+export SOURCE_DATE_EPOCH=1694026219
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -159,7 +160,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1692208394
+export SOURCE_DATE_EPOCH=1694026219
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libblockdev
 cp %{_builddir}/libblockdev-3.0.2/LICENSE %{buildroot}/usr/share/package-licenses/libblockdev/507ba5f4949dedff9e01b4d5b64b365fdc7d4d04 || :
