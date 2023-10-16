@@ -5,12 +5,18 @@
 #
 Name     : libblockdev
 Version  : 3.0.4.1
-Release  : 69
+Release  : 70
 URL      : https://github.com/storaged-project/libblockdev/releases/download/3.0.4-1/libblockdev-3.0.4.tar.gz
 Source0  : https://github.com/storaged-project/libblockdev/releases/download/3.0.4-1/libblockdev-3.0.4.tar.gz
 Summary  : A library for low-level manipulation with block devices
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-2.1+
+Requires: libblockdev-bin = %{version}-%{release}
+Requires: libblockdev-data = %{version}-%{release}
+Requires: libblockdev-lib = %{version}-%{release}
+Requires: libblockdev-license = %{version}-%{release}
+Requires: libblockdev-python = %{version}-%{release}
+Requires: libblockdev-python3 = %{version}-%{release}
 BuildRequires : buildreq-configure
 BuildRequires : glibc-bin
 BuildRequires : gobject-introspection-dev
@@ -31,7 +37,6 @@ BuildRequires : pkgconfig(libnvme)
 BuildRequires : pkgconfig(libparted)
 BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(uuid)
-BuildRequires : pypi(giscanner._giscanner)
 BuildRequires : volume_key-dev
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -46,6 +51,74 @@ be used as standalone libraries. One of the core principles of libblockdev is
 that it is stateless from the storage configuration's perspective (e.g. it has
 no information about VGs when creating an LV).
 
+%package bin
+Summary: bin components for the libblockdev package.
+Group: Binaries
+Requires: libblockdev-data = %{version}-%{release}
+Requires: libblockdev-license = %{version}-%{release}
+
+%description bin
+bin components for the libblockdev package.
+
+
+%package data
+Summary: data components for the libblockdev package.
+Group: Data
+
+%description data
+data components for the libblockdev package.
+
+
+%package dev
+Summary: dev components for the libblockdev package.
+Group: Development
+Requires: libblockdev-lib = %{version}-%{release}
+Requires: libblockdev-bin = %{version}-%{release}
+Requires: libblockdev-data = %{version}-%{release}
+Provides: libblockdev-devel = %{version}-%{release}
+Requires: libblockdev = %{version}-%{release}
+
+%description dev
+dev components for the libblockdev package.
+
+
+%package lib
+Summary: lib components for the libblockdev package.
+Group: Libraries
+Requires: libblockdev-data = %{version}-%{release}
+Requires: libblockdev-license = %{version}-%{release}
+
+%description lib
+lib components for the libblockdev package.
+
+
+%package license
+Summary: license components for the libblockdev package.
+Group: Default
+
+%description license
+license components for the libblockdev package.
+
+
+%package python
+Summary: python components for the libblockdev package.
+Group: Default
+Requires: libblockdev-python3 = %{version}-%{release}
+
+%description python
+python components for the libblockdev package.
+
+
+%package python3
+Summary: python3 components for the libblockdev package.
+Group: Default
+Requires: python3-core
+Requires: libbytesize
+
+%description python3
+python3 components for the libblockdev package.
+
+
 %prep
 %setup -q -n libblockdev-3.0.4
 cd %{_builddir}/libblockdev-3.0.4
@@ -58,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1697467098
+export SOURCE_DATE_EPOCH=1697498597
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -104,7 +177,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1697467098
+export SOURCE_DATE_EPOCH=1697498597
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libblockdev
 cp %{_builddir}/libblockdev-3.0.4/LICENSE %{buildroot}/usr/share/package-licenses/libblockdev/507ba5f4949dedff9e01b4d5b64b365fdc7d4d04 || :
@@ -116,3 +189,127 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/V3/usr/bin/lvm-cache-stats
+/V3/usr/bin/vfat-resize
+/usr/bin/lvm-cache-stats
+/usr/bin/vfat-resize
+
+%files data
+%defattr(-,root,root,-)
+/usr/lib64/girepository-1.0/BlockDev-3.0.typelib
+/usr/share/gir-1.0/*.gir
+
+%files dev
+%defattr(-,root,root,-)
+/usr/include/blockdev/blockdev.h
+/usr/include/blockdev/btrfs.h
+/usr/include/blockdev/crypto.h
+/usr/include/blockdev/dbus.h
+/usr/include/blockdev/dev_utils.h
+/usr/include/blockdev/dm.h
+/usr/include/blockdev/exec.h
+/usr/include/blockdev/extra_arg.h
+/usr/include/blockdev/fs.h
+/usr/include/blockdev/fs/btrfs.h
+/usr/include/blockdev/fs/exfat.h
+/usr/include/blockdev/fs/ext.h
+/usr/include/blockdev/fs/f2fs.h
+/usr/include/blockdev/fs/generic.h
+/usr/include/blockdev/fs/mount.h
+/usr/include/blockdev/fs/nilfs.h
+/usr/include/blockdev/fs/ntfs.h
+/usr/include/blockdev/fs/udf.h
+/usr/include/blockdev/fs/vfat.h
+/usr/include/blockdev/fs/xfs.h
+/usr/include/blockdev/logging.h
+/usr/include/blockdev/loop.h
+/usr/include/blockdev/lvm.h
+/usr/include/blockdev/mdraid.h
+/usr/include/blockdev/module.h
+/usr/include/blockdev/mpath.h
+/usr/include/blockdev/nvdimm.h
+/usr/include/blockdev/nvme.h
+/usr/include/blockdev/part.h
+/usr/include/blockdev/plugins.h
+/usr/include/blockdev/sizes.h
+/usr/include/blockdev/swap.h
+/usr/include/blockdev/utils.h
+/usr/lib64/libbd_btrfs.so
+/usr/lib64/libbd_crypto.so
+/usr/lib64/libbd_dm.so
+/usr/lib64/libbd_fs.so
+/usr/lib64/libbd_loop.so
+/usr/lib64/libbd_lvm-dbus.so
+/usr/lib64/libbd_lvm.so
+/usr/lib64/libbd_mdraid.so
+/usr/lib64/libbd_mpath.so
+/usr/lib64/libbd_nvdimm.so
+/usr/lib64/libbd_nvme.so
+/usr/lib64/libbd_part.so
+/usr/lib64/libbd_swap.so
+/usr/lib64/libbd_utils.so
+/usr/lib64/libblockdev.so
+/usr/lib64/pkgconfig/blockdev-utils.pc
+/usr/lib64/pkgconfig/blockdev.pc
+
+%files lib
+%defattr(-,root,root,-)
+/V3/usr/lib64/libbd_btrfs.so.3.0.0
+/V3/usr/lib64/libbd_crypto.so.3.0.0
+/V3/usr/lib64/libbd_dm.so.3.0.0
+/V3/usr/lib64/libbd_fs.so.3.0.0
+/V3/usr/lib64/libbd_loop.so.3.0.0
+/V3/usr/lib64/libbd_lvm-dbus.so.3.0.0
+/V3/usr/lib64/libbd_lvm.so.3.0.0
+/V3/usr/lib64/libbd_mdraid.so.3.0.0
+/V3/usr/lib64/libbd_mpath.so.3.0.0
+/V3/usr/lib64/libbd_nvdimm.so.3.0.0
+/V3/usr/lib64/libbd_nvme.so.3.0.0
+/V3/usr/lib64/libbd_part.so.3.0.0
+/V3/usr/lib64/libbd_swap.so.3.0.0
+/V3/usr/lib64/libbd_utils.so.3.0.0
+/V3/usr/lib64/libblockdev.so.3.0.0
+/usr/lib64/libbd_btrfs.so.3
+/usr/lib64/libbd_btrfs.so.3.0.0
+/usr/lib64/libbd_crypto.so.3
+/usr/lib64/libbd_crypto.so.3.0.0
+/usr/lib64/libbd_dm.so.3
+/usr/lib64/libbd_dm.so.3.0.0
+/usr/lib64/libbd_fs.so.3
+/usr/lib64/libbd_fs.so.3.0.0
+/usr/lib64/libbd_loop.so.3
+/usr/lib64/libbd_loop.so.3.0.0
+/usr/lib64/libbd_lvm-dbus.so.3
+/usr/lib64/libbd_lvm-dbus.so.3.0.0
+/usr/lib64/libbd_lvm.so.3
+/usr/lib64/libbd_lvm.so.3.0.0
+/usr/lib64/libbd_mdraid.so.3
+/usr/lib64/libbd_mdraid.so.3.0.0
+/usr/lib64/libbd_mpath.so.3
+/usr/lib64/libbd_mpath.so.3.0.0
+/usr/lib64/libbd_nvdimm.so.3
+/usr/lib64/libbd_nvdimm.so.3.0.0
+/usr/lib64/libbd_nvme.so.3
+/usr/lib64/libbd_nvme.so.3.0.0
+/usr/lib64/libbd_part.so.3
+/usr/lib64/libbd_part.so.3.0.0
+/usr/lib64/libbd_swap.so.3
+/usr/lib64/libbd_swap.so.3.0.0
+/usr/lib64/libbd_utils.so.3
+/usr/lib64/libbd_utils.so.3.0.0
+/usr/lib64/libblockdev.so.3
+/usr/lib64/libblockdev.so.3.0.0
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/libblockdev/507ba5f4949dedff9e01b4d5b64b365fdc7d4d04
+
+%files python
+%defattr(-,root,root,-)
+
+%files python3
+%defattr(-,root,root,-)
+/usr/lib/python3*/*

@@ -16,16 +16,11 @@ libkmod.so.2
 libm.so.6
 libmount.so.1
 libndctl.so.6
-libnspr4.so
 libnss3.so
-libnssutil3.so
 libnvme.so.1
 libparted-fs-resize.so.0
 libparted.so.2
-libplc4.so
-libplds4.so
 libsmime3.so
-libssl3.so
 libudev.so.1
 libuuid.so.1
 libvolume_key.so.1
