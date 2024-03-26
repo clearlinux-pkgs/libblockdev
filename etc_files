@@ -1,0 +1,9 @@
+/builddir/build/BUILDROOT/libblockdev-3.1.1.1-73.x86_64/etc/:
+/builddir/build/BUILDROOT/libblockdev-3.1.1.1-73.x86_64/etc/libblockdev/3/conf.d:
+/builddir/build/BUILDROOT/libblockdev-3.1.1.1-73.x86_64/etc/libblockdev/3:
+/builddir/build/BUILDROOT/libblockdev-3.1.1.1-73.x86_64/etc/libblockdev:
+00-default.cfg
+10-lvm-dbus.cfg
+3
+conf.d
+libblockdev
