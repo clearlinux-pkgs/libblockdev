@@ -4,3 +4,5 @@ nss-dev
 volume_key-dev
 # for ldd
 glibc-bin
+e2fsprogs-dev
+ndctl-dev
